@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 
 const Formulario = ({ estudiantes, setEstudiantes, estudiante }) => {
   const [nombre, setNombre] = useState("");
-  const [carrerra, setCarrerra] = useState("");
+  const [carrera, setCarrera] = useState("");
   const [semestre, setSemestre] = useState("");
   const [promedio, setPromedio] = useState("");
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (Object.keys(estudiante).length > 0) {
-      const { nombre, carrerra, semestre, promedio } = estudiante;
+      const { nombre, carrera, semestre, promedio } = estudiante;
       setNombre(nombre);
-      setCarrerra(carrerra);
+      setCarrera(carrera);
       setSemestre(semestre);
       setPromedio(promedio);
     }
@@ -28,7 +28,7 @@ const Formulario = ({ estudiantes, setEstudiantes, estudiante }) => {
     if (
       [
         nombre.trim(),
-        carrerra.trim(),
+        carrera.trim(),
         semestre.trim(),
         promedio.trim(),
       ].includes("")
@@ -39,7 +39,7 @@ const Formulario = ({ estudiantes, setEstudiantes, estudiante }) => {
     setError(false);
     const objetoEstudiante = {
       nombre,
-      carrerra,
+      carrera,
       semestre,
       promedio,
     };
@@ -63,7 +63,7 @@ const Formulario = ({ estudiantes, setEstudiantes, estudiante }) => {
 
   const limpiar = () => {
     setNombre("");
-    setCarrerra("");
+    setCarrera("");
     setSemestre("");
     setPromedio("");
   };
@@ -92,8 +92,8 @@ const Formulario = ({ estudiantes, setEstudiantes, estudiante }) => {
             type="text"
             className="border-2 w-full rounded-md text-black"
             placeholder="Carrera"
-            value={carrerra}
-            onChange={(e) => setCarrerra(e.target.value)}
+            value={carrera}
+            onChange={(e) => setCarrera(e.target.value)}
           />
           <label className="block">Semestre</label>
           <input
