@@ -6,12 +6,11 @@ export const useSelectorMonedas = (label, divisas) => {
     color: white;
   `;
   const SelectSubmit = styled.select`
-    background-color: #096aa2;
-    border: none;
+    background-color: #f3d137;
     border-radius: 5px;
     padding: 10px;
     width: 40%;
-    color: white;
+    color: black;
     font-weight: 100;
     text-align: center;
     font-size: 20px;

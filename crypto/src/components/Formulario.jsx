@@ -6,25 +6,31 @@ import { monedas } from "../data/monedas";
 import useSelectorMonedas from "../hooks/useSelectorMonedas";
 import Data from "./Data";
 
+const Contenedor = styled.div`
+  max-width: 90%;
+  margin: 0 auto;
+  width: 90%;
+  flex-wrap: wrap;
+`;
+
 const InputSubmit = styled.input`
-  background-color: #002280;
+  background-color: #da8d00;
   border-radius: 5px;
   width: 40%;
   padding: 8px;
-  color: white;
+  color: black;
   font-weight: 100;
   font-size: 20px;
   text-align: center;
 
   &:hover {
-    background-color: grey;
+    background-color: green;
     cursor: pointer;
   }
 `;
 
 const Labels = styled.label`
-  margin: 15px;
-  color: white;
+  color: black;
   font-size: 24px;
 `;
 
@@ -33,12 +39,17 @@ const Formulario = () => {
   const [error, setError] = useState(false);
   const [datos, setDatos] = useState({});
   const [consulta, setConsulta] = useState(false);
+  const [imagenCrypto, setImagenCrypto] = useState("");
   const [moneda, SelectorMonedas] = useSelectorMonedas(
-    <Labels></Labels>,
+    <Labels>
+      Selecciona tu moneda<br></br>
+    </Labels>,
     monedas
   );
   const [criptomoneda, SelectorCryptos] = useSelectorMonedas(
-    <Labels></Labels>,
+    <Labels>
+      Selecciona tu crypto moneda<br></br>
+    </Labels>,
     cryptos
   );
 
@@ -76,6 +87,8 @@ const Formulario = () => {
     const objetoCypto = resultado.Data.find(
       (crypto) => crypto.CoinInfo.Name === criptomoneda
     );
+    const imagenUrl = `https://cryptocompare.com${objetoCypto.CoinInfo.ImageUrl}`;
+    setImagenCrypto(imagenUrl);
     const objetoData = objetoCypto.DISPLAY[moneda];
     setDatos({
       pAhora: objetoData.PRICE,
@@ -88,21 +101,17 @@ const Formulario = () => {
   };
 
   return (
-    <>
+    <Contenedor>
       {error && <Error>Todos los campos son obligatorios</Error>}
       <form onSubmit={manejadorSubmit}>
-        <Labels>Selecciona tu moneda</Labels>
-        <br />
         <SelectorMonedas />
-        <br />
-        <Labels>Selecciona tu moneda</Labels>
-        <br />
+        <br></br>
         <SelectorCryptos />
-        <br />
+        <br></br>
         <InputSubmit type="submit" value="Cotizar" />
       </form>
-      {consulta && <Data data={datos} />}
-    </>
+      {consulta ? <Data data={datos} imagen={imagenCrypto} /> : null}
+    </Contenedor>
   );
 };
 

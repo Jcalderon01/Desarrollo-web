@@ -4,16 +4,21 @@ import ImageCrypto from "./img/crypto.png";
 
 function App() {
   const Contenedor = styled.div`
+    display: flex;
+
     max-width: 90%;
     margin: 0 auto;
     padding-top: 10%;
     width: 90%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 2;
+
+    flex-wrap: wrap;
   `;
 
   const Imagen = styled.img`
+    display: flex;
+
     max-width: 60%;
     width: 40%;
     height: auto;
@@ -21,24 +26,19 @@ function App() {
     display: block;
   `;
 
-  const Heading = styled.h1`
-    font-family: "Roboto Slab", serif;
-    color: white;
-    text-align: center;
+  const Titulo = styled.h1`
+    display: flex;
 
-    margin-top: 80px;
+    font-family: "Roboto Slab", serif;
+    color: #3fa03f;
+    text-align: center;
+    margin-top: 10px;
     font-weight: 300;
-    margin-bottom: 80px;
+    margin-bottom: 10px;
     font-size: 100px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    //-webkit-text-stroke-width: 1px;
+    // -webkit-text-stroke-color: ;
     &::after {
-      content: "";
-      width: 100px;
-      height: 6px;
-      background-color: dimgrey;
-      display: block;
-      margin: 10px auto 0 auto;
     }
   `;
 
@@ -46,7 +46,7 @@ function App() {
     <Contenedor>
       <Imagen src={ImageCrypto} />
       <div>
-        <Heading>CoinChecker</Heading>
+        <Titulo>CoinChecker</Titulo>
         <Formulario />
       </div>
     </Contenedor>

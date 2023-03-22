@@ -13,13 +13,18 @@ const Datos = styled.div`
   margin-top: 10px;
 `;
 
-const Data = ({ data }) => {
+const Imagen = styled.img`
+  width: 50%;
+`;
+
+const Data = ({ data, imagen }) => {
   const { pAhora, pInicio, pBajo } = data;
   return (
     <Datos>
       <h1>Actual: {pAhora}</h1>
       <h1>Inicio: {pInicio}</h1>
       <h1>Bajo: {pBajo}</h1>
+      <Imagen src={imagen} alt="Imagen de la criptomoneda" />
     </Datos>
   );
 };
