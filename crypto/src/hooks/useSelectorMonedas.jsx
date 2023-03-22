@@ -5,6 +5,19 @@ export const useSelectorMonedas = (label, divisas) => {
   const Label = styled.label`
     color: white;
   `;
+  const SelectSubmit = styled.select`
+    background-color: #096aa2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 40%;
+    color: white;
+    font-weight: 100;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  `;
 
   const [state, setState] = useState("");
 
@@ -12,14 +25,14 @@ export const useSelectorMonedas = (label, divisas) => {
     <>
       <Label>{label}</Label>
 
-      <select value={state} onChange={(e) => setState(e.target.value)}>
+      <SelectSubmit value={state} onChange={(e) => setState(e.target.value)}>
         <option>Seleccione una divisa</option>
         {divisas.map((opcion) => (
           <option key={opcion.id} value={opcion.id}>
             {opcion.nombre}
           </option>
         ))}
-      </select>
+      </SelectSubmit>
     </>
   );
 
