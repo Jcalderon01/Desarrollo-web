@@ -4,23 +4,22 @@ import ImageCrypto from "./img/crypto.png";
 
 function App() {
   const Contenedor = styled.div`
-    display: flex;
-
-    max-width: 90%;
+    max-width: 900px;
     margin: 0 auto;
-    padding-top: 10%;
+
     width: 90%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
-    flex-wrap: wrap;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    } ;
   `;
 
   const Imagen = styled.img`
-    display: flex;
-
-    max-width: 60%;
-    width: 40%;
+    padding-top: 200px;
+    max-width: 50%;
+    width: 50%;
     height: auto;
     margin: 1px auto 0 auto;
     display: block;
@@ -36,8 +35,6 @@ function App() {
     font-weight: 300;
     margin-bottom: 10px;
     font-size: 100px;
-    //-webkit-text-stroke-width: 1px;
-    // -webkit-text-stroke-color: ;
     &::after {
     }
   `;
